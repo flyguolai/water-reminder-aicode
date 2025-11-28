@@ -1,0 +1,13 @@
+{
+  "reminder_interval": 15,
+  "show_notification": true,
+  "play_sound": true,
+  "sound_file": null,
+  "reminder_messages": [
+    "该站起来活动一下啦！顺便喝口水吧~",
+    "休息一下，补充水分，保持健康！",
+    "喝水时间到！记得起身活动活动脖子和肩膀。",
+    "工作虽重要，健康价更高！来杯水吧~",
+    "每15分钟的提醒时间到了，起来动一动，喝口水！"
+  ]
+}
