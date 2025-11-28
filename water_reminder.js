@@ -168,8 +168,17 @@ async function main() {
 }
 
 // 启动程序
-main().catch(error => {
-  console.error('程序运行出错:', error);
-  rl.close();
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(error => {
+    console.error('程序运行出错:', error);
+    rl.close();
+    process.exit(1);
+  });
+}
+
+// 导出函数供测试使用
+module.exports = {
+  loadConfig,
+  saveConfig,
+  sendReminder
+};
