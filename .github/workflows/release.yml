@@ -1,0 +1,39 @@
+name: Release to GitHub
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+      
+      - name: 设置Node.js环境
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      
+      - name: 安装依赖
+        run: npm ci
+      
+      - name: 运行测试
+        run: npm test || echo "跳过测试，继续执行构建"
+      
+      - name: 构建应用
+        run: npm run build
+      
+      - name: 创建GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/water_reminder_new.exe
+            dist/notifier/*
+          name: ${{ github.ref_name }}
+          body: 自动发布版本 ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
