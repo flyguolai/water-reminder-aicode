@@ -7,18 +7,12 @@
   "scripts": {
     "start": "node water_reminder.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pkg ./water_reminder.js --output water_reminder.exe"
-  },
-  "dependencies": {
-    "node-notifier": "^10.0.1",
-    "node-schedule": "^2.1.1"
+    "build": "node build.js"
   },
   "pkg": {
-    "assets": [
-      "node_modules/node-notifier/vendor/**/*",
-      "node_modules/node-notifier/notifiers/**/*"
-    ],
-    "targets": ["node18-win-x64"]
+    "targets": [
+      "node18-win-x64"
+    ]
   },
   "author": "",
   "license": "MIT",
@@ -28,8 +22,14 @@
     "water",
     "notification"
   ],
-  "files": ["*.js", "node_modules/**/*"],
+  "files": [
+    "*.js",
+    "node_modules/**/*"
+  ],
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "node-notifier": "^10.0.1",
+    "node-schedule": "^2.1.1",
     "pkg": "^5.8.1"
   }
 }
